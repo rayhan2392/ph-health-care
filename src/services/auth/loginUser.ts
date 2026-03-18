@@ -3,7 +3,6 @@
 
 import z from "zod";
 import { parse } from "cookie";
-import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { getDefaultDashboardRoute, isValidRedirectForRole, UserRole } from "@/lib/auth-utils";
 import { redirect } from "next/navigation";
@@ -132,6 +131,6 @@ export const loginUser = async (_currentState: any, formData: any): Promise<any>
             throw error;
         }
         console.log(error);
-        return { error: "Login failed" };
+         return { success: false, message: `${process.env.NODE_ENV === 'development' ? error.message : "Login Failed. You might have entered incorrect email or password."}` };
     }
 }
