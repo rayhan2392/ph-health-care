@@ -1,6 +1,10 @@
+import LogoutButton from "@/components/shared/LogoutButton"
+
 const DoctorDashboardPage = () => {
   return (
-    <div>DoctorDashboardPage</div>
+    <div>
+      <LogoutButton/>
+      DoctorDashboardPage</div>
   )
 }
 
