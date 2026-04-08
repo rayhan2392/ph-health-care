@@ -2,30 +2,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
+import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { registerPatient } from "@/services/auth/registerPatient";
 import { useActionState } from "react";
 import { User, MapPin, Mail, Lock } from "lucide-react";
-
+import InputFieldError from "@/components/shared/InputFieldError";
 
 
 const RegisterForm = () => {
     const [state, formAction, isPending] = useActionState(registerPatient, null);
-    console.log(state, "state");
 
-    const getFieldError = (fieldName: string) => {
-        if (state && state.errors) {
-            const error = state.errors.find((err: any) => err.field === fieldName);
-            if (error) {
-                return error.message;
-            } else {
-                return null;
-            }
-        } else {
-            return null;
-        }
-    };
     return (
         <form action={formAction} className="space-y-5">
             <div className="space-y-5">
@@ -42,11 +29,7 @@ const RegisterForm = () => {
                         placeholder="Enter your full name"
                         className="h-11 mt-1.5"
                     />
-                    {getFieldError("name") && (
-                        <FieldDescription className="text-red-600 text-sm mt-1">
-                            {getFieldError("name")}
-                        </FieldDescription>
-                    )}
+                    <InputFieldError field="name" state={state} />
                 </Field>
 
                 {/* Email */}
@@ -62,11 +45,7 @@ const RegisterForm = () => {
                         placeholder="Enter your email address"
                         className="h-11 mt-1.5"
                     />
-                    {getFieldError("email") && (
-                        <FieldDescription className="text-red-600 text-sm mt-1">
-                            {getFieldError("email")}
-                        </FieldDescription>
-                    )}
+                    <InputFieldError field="email" state={state} />
                 </Field>
 
                 {/* Address */}
@@ -82,11 +61,7 @@ const RegisterForm = () => {
                         placeholder="Enter your address"
                         className="h-11 mt-1.5"
                     />
-                    {getFieldError("address") && (
-                        <FieldDescription className="text-red-600 text-sm mt-1">
-                            {getFieldError("address")}
-                        </FieldDescription>
-                    )}
+                    <InputFieldError field="address" state={state} />
                 </Field>
 
                 {/* Password Fields */}
@@ -103,11 +78,7 @@ const RegisterForm = () => {
                             placeholder="Create password"
                             className="h-11 mt-1.5"
                         />
-                        {getFieldError("password") && (
-                            <FieldDescription className="text-red-600 text-sm mt-1">
-                                {getFieldError("password")}
-                            </FieldDescription>
-                        )}
+                        <InputFieldError field="password" state={state} />
                     </Field>
 
                     <Field>
@@ -122,11 +93,7 @@ const RegisterForm = () => {
                             placeholder="Confirm password"
                             className="h-11 mt-1.5"
                         />
-                        {getFieldError("confirmPassword") && (
-                            <FieldDescription className="text-red-600 text-sm mt-1">
-                                {getFieldError("confirmPassword")}
-                            </FieldDescription>
-                        )}
+                        <InputFieldError field="confirmPassword" state={state} />
                     </Field>
                 </div>
             </div>
