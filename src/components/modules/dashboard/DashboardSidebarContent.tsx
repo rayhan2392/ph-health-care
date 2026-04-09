@@ -26,7 +26,8 @@ const DashboardSidebarContent = ({
       {/* Logo/Brand */}
       <div className="flex h-16 items-center border-b px-6">
         <Link href={dashboardHome} className="flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">PH Healthcare</span>
+          <span className="text-xl font-bold text-lavender-500">PH</span>
+          <span className="text-xl font-light text-medical-dark">Healthcare</span>
         </Link>
       </div>
 

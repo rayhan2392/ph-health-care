@@ -1,9 +1,9 @@
 import React from 'react'
 
-const DoctorLayoutPage = (children:React.ReactNode) => {
+const DoctorLayoutPage = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-        {children}
+      {children}
     </div>
   )
 }
